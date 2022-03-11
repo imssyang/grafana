@@ -69,7 +69,7 @@ init() {
   chown -R root:root $HOME
   chmod 755 $HOME
 
-  _enable_service grafana.service
+  _enable_service grafana-server.service
   _enable_service grafana-agent.service
 }
 
@@ -77,22 +77,22 @@ deinit() {
   _rmdir $HOME/data
   _rmdir $HOME/var
   _rmdir $HOME/var/log
-  _disable_service grafana.service
+  _disable_service grafana-server.service
   _disable_service grafana-agent.service
 }
 
 start() {
-  _start_service grafana.service
+  _start_service grafana-server.service
   _start_service grafana-agent.service
 }
 
 stop() {
-  _stop_service grafana.service
+  _stop_service grafana-server.service
   _stop_service grafana-agent.service
 }
 
 show() {
-  systemctl status grafana.service
+  systemctl status grafana-server.service
   systemctl status grafana-agent.service
 }
 
