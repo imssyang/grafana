@@ -1,0 +1,20 @@
+server:
+  log_level: info
+  http_listen_port: 3050
+
+metrics:
+  global:
+    scrape_interval: 1m
+    wal_directory: ''
+    remote_write:
+      - url: http://192.168.5.220:9009/api/prom/push
+  configs:
+    - name: default
+      scrape_configs:
+        - job_name: agent
+          static_configs:
+            - targets: ['192.168.5.220:3050']
+
+integrations:
+  node_exporter:
+    enabled: true
