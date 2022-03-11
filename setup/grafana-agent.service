@@ -1,0 +1,14 @@
+[Unit]
+Description=Grafana Agent
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/opt/grafana/bin/agent \
+    --config.file /opt/grafana/conf/agent.yml
+
+[Install]
+WantedBy=multi-user.target
