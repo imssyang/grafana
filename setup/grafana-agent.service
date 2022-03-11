@@ -7,7 +7,7 @@ After=network-online.target
 User=root
 Group=root
 Type=simple
-ExecStart=/opt/grafana/bin/agent \
+ExecStart=/opt/grafana/bin/grafana-agent \
     --config.file /opt/grafana/conf/agent.yml
 
 [Install]
