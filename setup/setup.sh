@@ -70,7 +70,7 @@ init() {
   chmod 755 $HOME
 
   _enable_service grafana-server.service
-  _enable_service grafana-agent.service
+  #_enable_service grafana-agent.service
 }
 
 deinit() {
