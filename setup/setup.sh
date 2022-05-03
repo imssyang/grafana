@@ -62,9 +62,9 @@ _stop_service() {
 }
 
 init() {
-  _mkdir $HOME/data
-  _mkdir $HOME/var
+  _mkdir $HOME/data/plugins
   _mkdir $HOME/var/log
+  _mkdir $HOME/var/run
 
   chown -R root:root $HOME
   chmod 755 $HOME
@@ -76,24 +76,27 @@ init() {
 deinit() {
   _rmdir $HOME/data
   _rmdir $HOME/var
-  _rmdir $HOME/var/log
+
+  chown -R root:root $HOME
+  chmod 755 $HOME
+
   _disable_service grafana-server.service
-  _disable_service grafana-agent.service
+  #_disable_service grafana-agent.service
 }
 
 start() {
   _start_service grafana-server.service
-  _start_service grafana-agent.service
+  #_start_service grafana-agent.service
 }
 
 stop() {
   _stop_service grafana-server.service
-  _stop_service grafana-agent.service
+  #_stop_service grafana-agent.service
 }
 
 show() {
   systemctl status grafana-server.service
-  systemctl status grafana-agent.service
+  #systemctl status grafana-agent.service
 }
 
 case "$1" in
